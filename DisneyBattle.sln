@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle", "DisneyBattle\DisneyBattle\DisneyBattle.csproj", "{FBE70BC6-2B75-4E24-BD87-7C570394465B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.Client", "DisneyBattle\DisneyBattle.Client\DisneyBattle.Client.csproj", "{98A2125A-CB8D-4833-A601-D5C1FD950420}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBE70BC6-2B75-4E24-BD87-7C570394465B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBE70BC6-2B75-4E24-BD87-7C570394465B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBE70BC6-2B75-4E24-BD87-7C570394465B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBE70BC6-2B75-4E24-BD87-7C570394465B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CF9510A-4CD1-4B10-9BFA-25254649D9C8}
+	EndGlobalSection
+EndGlobal
