@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle", "DisneyBattl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.Client", "DisneyBattle\DisneyBattle.Client\DisneyBattle.Client.csproj", "{98A2125A-CB8D-4833-A601-D5C1FD950420}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.WebAPI", "DisneyBattle.WebAPI\DisneyBattle.WebAPI.csproj", "{CC168510-DF4C-465B-A358-B4EE7EF5E190}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.Interfaces", "DisneyBattle.Interfaces\DisneyBattle.Interfaces.csproj", "{703801A0-5301-4DD0-9DE0-48F35C30B007}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC168510-DF4C-465B-A358-B4EE7EF5E190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC168510-DF4C-465B-A358-B4EE7EF5E190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC168510-DF4C-465B-A358-B4EE7EF5E190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC168510-DF4C-465B-A358-B4EE7EF5E190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{703801A0-5301-4DD0-9DE0-48F35C30B007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{703801A0-5301-4DD0-9DE0-48F35C30B007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{703801A0-5301-4DD0-9DE0-48F35C30B007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{703801A0-5301-4DD0-9DE0-48F35C30B007}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
