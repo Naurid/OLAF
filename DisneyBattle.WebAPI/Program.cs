@@ -12,7 +12,19 @@ builder.Services.AddSwaggerGen();
 
 // Configuration de la chaîne de connexion
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowBlazorApp",
+        builder => builder.WithOrigins("https://localhost:7262")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials());
+});
+builder.Services.AddScoped(sp =>
+    new HttpClient
+    {
+        BaseAddress = new Uri("https://localhost:7171/api/")
+    });  
 // Injection des dépendances
 builder.Services.AddTransient<IPersonnageRepository, PersonnageRepository>(provider =>
     new PersonnageRepository(connectionString));
@@ -27,7 +39,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+// Use CORS policy
+app.UseCors("AllowBlazorApp");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
