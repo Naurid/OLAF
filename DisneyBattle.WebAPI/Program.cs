@@ -9,9 +9,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddScoped<DbConnection>(
-    s => new SqlConnection(builder.Configuration.GetConnectionString("Dev")));
+    s => new SqlConnection(builder.Configuration.GetConnectionString("DisneyBD")));
 builder.Services.AddTransient<ILieuRepository, LieuService>();
+builder.Services.AddTransient<IUtilisateurServices, UtilisateursService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
