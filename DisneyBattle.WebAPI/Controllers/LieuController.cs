@@ -1,3 +1,4 @@
+using DisneyBattle.WebAPI.Models;
 using DisneyBattle.WebAPI.Repos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,5 +17,11 @@ public class LieuController(ILieuRepository lr):ControllerBase
     public IActionResult Get(int id)
     {
         return Ok(lr.GetById(id));
+    }
+    
+    [HttpPut("Put/{id}")]
+    public IActionResult Put(int id, [FromBody] LieuModel entity)
+    {
+        return Ok(lr.Update(id, entity));
     }
 }
