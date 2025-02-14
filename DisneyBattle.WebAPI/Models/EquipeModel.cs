@@ -7,6 +7,12 @@
         public int  UtilisateurId{ get; set; }
         public DateTime DateCreation { get; set; }
 
-        public List<TempPersonnageModel> Personnages { get; set; } = new List<TempPersonnageModel>();
+        public EquipeModel(int id, string nom, int utilisateurId, DateTime dateCreation)
+        {
+            Id = id;
+            Nom = nom;
+            UtilisateurId = utilisateurId;
+            DateCreation = dateCreation;
+        }
     }
 }
