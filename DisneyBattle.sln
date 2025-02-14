@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle", "DisneyBattle\DisneyBattle\DisneyBattle.csproj", "{FBE70BC6-2B75-4E24-BD87-7C570394465B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.Client", "DisneyBattle\DisneyBattle.Client\DisneyBattle.Client.csproj", "{98A2125A-CB8D-4833-A601-D5C1FD950420}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.WebAPI", "DisneyBattle.WebAPI\DisneyBattle.WebAPI.csproj", "{CC168510-DF4C-465B-A358-B4EE7EF5E190}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.Interfaces", "DisneyBattle.Interfaces\DisneyBattle.Interfaces.csproj", "{703801A0-5301-4DD0-9DE0-48F35C30B007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.Blazor", "DisneyBattle.Blazor\DisneyBattle.Blazor.csproj", "{B1C3465E-3307-4AA0-AF3F-48B6CB51C670}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FBE70BC6-2B75-4E24-BD87-7C570394465B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBE70BC6-2B75-4E24-BD87-7C570394465B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBE70BC6-2B75-4E24-BD87-7C570394465B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBE70BC6-2B75-4E24-BD87-7C570394465B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98A2125A-CB8D-4833-A601-D5C1FD950420}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC168510-DF4C-465B-A358-B4EE7EF5E190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC168510-DF4C-465B-A358-B4EE7EF5E190}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC168510-DF4C-465B-A358-B4EE7EF5E190}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +23,10 @@ Global
 		{703801A0-5301-4DD0-9DE0-48F35C30B007}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{703801A0-5301-4DD0-9DE0-48F35C30B007}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{703801A0-5301-4DD0-9DE0-48F35C30B007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1C3465E-3307-4AA0-AF3F-48B6CB51C670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C3465E-3307-4AA0-AF3F-48B6CB51C670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C3465E-3307-4AA0-AF3F-48B6CB51C670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C3465E-3307-4AA0-AF3F-48B6CB51C670}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
