@@ -1,6 +1,6 @@
 ﻿
 using DisneyBattle.Services;
-using DisneyBattle.WebAPI.Models.Stock.Models;
+using DisneyBattle.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DisneyBattle.WebAPI.Controllers

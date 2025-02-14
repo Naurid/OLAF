@@ -1,8 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using DisneyBattle.WebAPI.Models;
 using System.Collections.Generic;
-using DisneyBattle.WebAPI.Models.Stock.Models;
-
 
 namespace DisneyBattle.WebAPI.Repositories
 {
@@ -17,7 +15,8 @@ namespace DisneyBattle.WebAPI.Repositories
 
         public bool Insert(PersonnageModel personnage)
         {
-            string query = "INSERT INTO personnages (nom, alignement_id, niveau, experience, points_vie, points_attaque, points_defense, lieu_id) VALUES (@Nom, @AlignementId, @Niveau, @Experience, @PointsVie, @PointsAttaque, @PointsDefense, @LieuId)";
+            string query = "INSERT INTO personnages (nom, alignement_id, niveau, experience, points_vie, points_attaque, points_defense, lieu_id) " +
+                           "VALUES (@Nom, @AlignementId, @Niveau, @Experience, @PointsVie, @PointsAttaque, @PointsDefense, @LieuId)";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -39,7 +38,9 @@ namespace DisneyBattle.WebAPI.Repositories
 
         public bool Update(int id, PersonnageModel personnage)
         {
-            string query = "UPDATE personnages SET nom = @Nom, alignement_id = @AlignementId, niveau = @Niveau, experience = @Experience, points_vie = @PointsVie, points_attaque = @PointsAttaque, points_defense = @PointsDefense, lieu_id = @LieuId WHERE id = @Id";
+            string query = "UPDATE personnages SET nom = @Nom, alignement_id = @AlignementId, niveau = @Niveau, " +
+                           "experience = @Experience, points_vie = @PointsVie, points_attaque = @PointsAttaque, " +
+                           "points_defense = @PointsDefense, lieu_id = @LieuId WHERE id = @Id";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -63,7 +64,12 @@ namespace DisneyBattle.WebAPI.Repositories
         public PersonnageModel GetById(int id)
         {
             PersonnageModel personnage = null;
-            string query = "SELECT id, nom, alignement_id, niveau, experience, points_vie, points_attaque, points_defense, lieu_id FROM personnages WHERE id = @id";
+            string query = @"
+                SELECT p.id, p.nom, p.alignement_id, p.niveau, p.experience, p.points_vie, p.points_attaque, p.points_defense, p.lieu_id,
+                       l.id AS LieuId, l.nom AS LieuNom, l.description AS LieuDescription
+                FROM personnages p
+                LEFT JOIN lieux l ON p.lieu_id = l.id
+                WHERE p.id = @id";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -84,7 +90,13 @@ namespace DisneyBattle.WebAPI.Repositories
                             PointsVie = reader.GetInt32(5),
                             PointsAttaque = reader.GetInt32(6),
                             PointsDefense = reader.GetInt32(7),
-                            LieuId = reader.GetInt32(8)
+                            LieuId = reader.GetInt32(8),
+                            Lieu = new LieuModel
+                            {
+                                Id = reader.GetInt32(9),
+                                Name = reader.GetString(10),
+                                Description = reader.GetString(11)
+                            }
                         };
                     }
                 }
@@ -95,7 +107,11 @@ namespace DisneyBattle.WebAPI.Repositories
         public IEnumerable<PersonnageModel> GetAll()
         {
             var personnages = new List<PersonnageModel>();
-            string query = "SELECT id, nom, alignement_id, niveau, experience, points_vie, points_attaque, points_defense, lieu_id FROM personnages";
+            string query = @"
+                SELECT p.id, p.nom, p.alignement_id, p.niveau, p.experience, p.points_vie, p.points_attaque, p.points_defense, p.lieu_id,
+                       l.id AS LieuId, l.nom AS LieuNom, l.description AS LieuDescription
+                FROM personnages p
+                LEFT JOIN lieux l ON p.lieu_id = l.id";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -115,7 +131,13 @@ namespace DisneyBattle.WebAPI.Repositories
                             PointsVie = reader.GetInt32(5),
                             PointsAttaque = reader.GetInt32(6),
                             PointsDefense = reader.GetInt32(7),
-                            LieuId = reader.GetInt32(8)
+                            LieuId = reader.GetInt32(8),
+                            Lieu = new LieuModel
+                            {
+                                Id = reader.GetInt32(9),
+                                Name = reader.GetString(10),
+                                Description = reader.GetString(11)
+                            }
                         });
                     }
                 }
