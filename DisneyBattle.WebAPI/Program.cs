@@ -1,4 +1,6 @@
+using DisneyBattle.Services;
 using DisneyBattle.WebAPI.Repos;
+using DisneyBattle.WebAPI.Repositories;
 using DisneyBattle.WebAPI.Services;
 using Microsoft.Data.SqlClient;
 using System.Data.Common;
@@ -35,6 +37,10 @@ builder.Services.AddTransient<PersonnageService>();
 builder.Services.AddTransient<DbConnection>(sp => new SqlConnection(connectionString));
 builder.Services.AddTransient<IEquipementServices, EquipementServices>();
 
+builder.Services.AddScoped<DbConnection>(
+    s => new SqlConnection(builder.Configuration.GetConnectionString("DisneyBD")));
+builder.Services.AddTransient<ILieuRepository, LieuService>();
+builder.Services.AddTransient<IUtilisateurServices, UtilisateursService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
