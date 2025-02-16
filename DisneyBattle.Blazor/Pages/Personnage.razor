@@ -1,11 +1,68 @@
 ﻿@page "/Personnage"
 
-<h3>Personnage</h3>
-@foreach (var item in noms)
+@using BlazorApp1.Models
+
+<h3>Liste des Personnages</h3>
+
+@if (listePersonnages == null)
 {
-    <b>@item</b>
+    <p>Chargement en cours...</p>
+}
+else if (listePersonnages.Count == 0)
+{
+    <p>Aucun personnage trouvé.</p>
+}
+else
+{
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Alignement</th>
+                <th>Niveau</th>
+                <th>Expérience</th>
+                <th>PV</th>
+                <th>Attaque</th>
+                <th>Défense</th>
+                <th>Lieu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var personnage in listePersonnages)
+            {
+                <tr>
+                    <td>@personnage.Id</td>
+                    <td>@personnage.Nom</td>
+                    <td>@personnage.AlignementId</td>
+                    <td>@personnage.Niveau</td>
+                    <td>@personnage.Experience</td>
+                    <td>@personnage.PointsVie</td>
+                    <td>@personnage.PointsAttaque</td>
+                    <td>@personnage.PointsDefense</td>
+                    <td>@personnage.LieuId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
-<hr />
-@rep
- 
+@code {
+    [Inject]
+    public HttpClient _Client { get; set; }
+
+    private List<PersonnageModel> listePersonnages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            listePersonnages = await _Client.GetFromJsonAsync<List<PersonnageModel>>("https://localhost:7171/api/personnage");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erreur lors de la récupération des personnages : {ex.Message}");
+            listePersonnages = new List<PersonnageModel>();
+        }
+    }
+}
