@@ -1,5 +1,11 @@
+using DisneyBattle.WebAPI.Repos;
+using DisneyBattle.WebAPI.Services;
+using Microsoft.Data.SqlClient;
+using System.Data.Common;
+
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
+
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -25,6 +31,9 @@ builder.Services.AddTransient<IPersonnageRepository, PersonnageRepository>(provi
     new PersonnageRepository(connectionString));
 
 builder.Services.AddTransient<PersonnageService>();
+
+builder.Services.AddTransient<DbConnection>(sp => new SqlConnection(connectionString));
+builder.Services.AddTransient<IEquipementServices, EquipementServices>();
 
 var app = builder.Build();
 
