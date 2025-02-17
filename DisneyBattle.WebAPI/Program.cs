@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
@@ -30,13 +31,15 @@ builder.Services.AddScoped(sp =>
         BaseAddress = new Uri("https://localhost:7171/api/")
     });  
 // Injection des d�pendances
+
+builder.Services.AddScoped<DbConnection>(
+    s => new SqlConnection(builder.Configuration.GetConnectionString("DisneyBD")));
 builder.Services.AddTransient<IPersonnageRepository, PersonnageRepository>(provider =>
-    new PersonnageRepository(connectionString));
-
-builder.Services.AddTransient<PersonnageService>();
-
-builder.Services.AddTransient<DbConnection>(sp => new SqlConnection(connectionString));
+    new PersonnageRepository(connectionString)); 
 builder.Services.AddTransient<IEquipementServices, EquipementServices>();
+builder.Services.AddTransient<ILieuRepository, LieuService>();
+builder.Services.AddTransient<IUtilisateurServices, UtilisateursService>();
+ 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -47,7 +50,6 @@ if (app.Environment.IsDevelopment())
 }
 // Use CORS policy
 app.UseCors("AllowBlazorApp");
-app.UseHttpsRedirection();
-
 app.MapControllers();
+app.UseHttpsRedirection();
 app.Run();
