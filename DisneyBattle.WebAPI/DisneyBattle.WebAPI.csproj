@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
@@ -17,8 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DisneyBattle.Interfaces\DisneyBattle.Interfaces.csproj" />
-      <ProjectReference Include="..\DisneyBattle\DisneyBattle.Client\DisneyBattle.Client.csproj" />
-      <ProjectReference Include="..\DisneyBattle\DisneyBattle\DisneyBattle.csproj" />
+		
     </ItemGroup>
 
 </Project>

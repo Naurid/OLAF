@@ -1,4 +1,6 @@
+using DisneyBattle.Services;
 using DisneyBattle.WebAPI.Repos;
+using DisneyBattle.WebAPI.Repositories;
 using DisneyBattle.WebAPI.Services;
 using Microsoft.Data.SqlClient;
 using System.Data.Common;
@@ -11,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddControllers();
 // Configuration de la cha�ne de connexion
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddCors(options =>
@@ -34,7 +37,6 @@ builder.Services.AddTransient<PersonnageService>();
 
 builder.Services.AddTransient<DbConnection>(sp => new SqlConnection(connectionString));
 builder.Services.AddTransient<IEquipementServices, EquipementServices>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -47,6 +49,5 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowBlazorApp");
 app.UseHttpsRedirection();
 
-
-
+app.MapControllers();
 app.Run();
