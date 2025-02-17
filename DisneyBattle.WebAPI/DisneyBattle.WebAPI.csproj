@@ -16,8 +16,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DisneyBattle.Interfaces\DisneyBattle.Interfaces.csproj" />
-      <ProjectReference Include="..\DisneyBattle\DisneyBattle.Client\DisneyBattle.Client.csproj" />
-      <ProjectReference Include="..\DisneyBattle\DisneyBattle\DisneyBattle.csproj" />
     </ItemGroup>
 
 </Project>
