@@ -17,17 +17,17 @@ public class LieuService:ILieuRepository
     }
     public bool Insert(LieuModel entity)
     {
-        throw new NotImplementedException();
+        return 1 == _dbConnection.ExecuteNonQuery("INSERT INTO [dbo].[lieux] (nom, description) VALUES @nom, @description ", false, new{ nom = entity.Name, description = entity.Description });
     }
 
     public bool Update(int id, LieuModel entity)
     {
-        throw new NotImplementedException();
+        return 1 == _dbConnection.ExecuteNonQuery("UPDATE [dbo].[lieux] SET [dbo].[lieux].[nom] = @nom, [dbo].[lieux].[description] = @description WHERE [dbo].[lieux].[id] = @id ", false, entity);
     }
 
     public LieuModel GetById(int id)
     {
-        throw new NotImplementedException();
+        return _dbConnection.ExecuteReader("SELECT * FROM [dbo].[lieux] WHERE [dbo].[lieux].[id] = @Id", dr => dr.ToLieu(), false, new{ Id = id}).SingleOrDefault();
     }
 
     public IEnumerable<LieuModel> GetAll()
