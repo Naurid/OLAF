@@ -1,3 +1,9 @@
+using DisneyBattle.WebAPI.Repos;
+using DisneyBattle.WebAPI.Services;
+using Microsoft.Data.SqlClient;
+using System.Data.Common;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,10 +12,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
-//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-//builder.Services.AddTransient<DbConnection>(sp => new SqlConnection(connectionString));
-//builder.Services.AddTransient<IEquipementServices, EquipementServices>();
+builder.Services.AddTransient<DbConnection>(sp => new SqlConnection(connectionString));
+builder.Services.AddTransient<IEquipementServices, EquipementServices>();
 
 var app = builder.Build();
 
