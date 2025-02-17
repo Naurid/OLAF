@@ -20,7 +20,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorApp",
-        builder => builder.WithOrigins("https://localhost:7262")
+        builder => builder.WithOrigins("https://localhost:7262","http://localhost:5240")
                           .AllowAnyMethod()
                           .AllowAnyHeader()
                           .AllowCredentials());
@@ -33,7 +33,7 @@ builder.Services.AddScoped(sp =>
 // Injection des d�pendances
 
 builder.Services.AddScoped<DbConnection>(
-    s => new SqlConnection(builder.Configuration.GetConnectionString("DisneyBD")));
+    s => new SqlConnection(connectionString));
 builder.Services.AddTransient<IPersonnageRepository, PersonnageRepository>(provider =>
     new PersonnageRepository(connectionString)); 
 builder.Services.AddTransient<IEquipementServices, EquipementServices>();
