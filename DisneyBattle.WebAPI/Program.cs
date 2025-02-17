@@ -1,16 +1,11 @@
-
-using DisneyBattle.Services;
-using DisneyBattle.Interfaces;
-using DisneyBattle.WebAPI.Repositories;
-
 var builder = WebApplication.CreateBuilder(args);
-
-// Ajout des services
 builder.Services.AddControllers();
+// Add services to the container.
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configuration de la chaîne de connexion
+// Configuration de la chaï¿½ne de connexion
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddCors(options =>
 {
@@ -25,7 +20,7 @@ builder.Services.AddScoped(sp =>
     {
         BaseAddress = new Uri("https://localhost:7171/api/")
     });  
-// Injection des dépendances
+// Injection des dï¿½pendances
 builder.Services.AddTransient<IPersonnageRepository, PersonnageRepository>(provider =>
     new PersonnageRepository(connectionString));
 
@@ -33,7 +28,7 @@ builder.Services.AddTransient<PersonnageService>();
 
 var app = builder.Build();
 
-// Configuration du pipeline HTTP
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -42,6 +37,7 @@ if (app.Environment.IsDevelopment())
 // Use CORS policy
 app.UseCors("AllowBlazorApp");
 app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
+
+
+
 app.Run();
