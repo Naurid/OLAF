@@ -24,4 +24,10 @@ public class LieuController(ILieuRepository lr):ControllerBase
     {
         return Ok(lr.Update(id, entity));
     }
+    
+    [HttpPost("Post")]
+    public IActionResult Post([FromBody] LieuModel entity)
+    {
+        return Ok(lr.Insert(entity));
+    }
 }

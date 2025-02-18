@@ -20,7 +20,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorApp",
-        builder => builder.WithOrigins("https://localhost:7262","http://localhost:5240")
+        builder => builder.WithOrigins("https://localhost:7262","http://localhost:5240","http://localhost:5143")
                           .AllowAnyMethod()
                           .AllowAnyHeader()
                           .AllowCredentials());
@@ -28,14 +28,15 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped(sp =>
     new HttpClient
     {
-        BaseAddress = new Uri("https://localhost:7171/api/")
+        BaseAddress = new Uri("https://localhost:5240/api/")
     });  
 // Injection des d�pendances
 
 builder.Services.AddScoped<DbConnection>(
     s => new SqlConnection(connectionString));
 builder.Services.AddTransient<IPersonnageRepository, PersonnageRepository>(provider =>
-    new PersonnageRepository(connectionString)); 
+    new PersonnageRepository(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddTransient<PersonnageService>();
 builder.Services.AddTransient<IEquipementServices, EquipementServices>();
 builder.Services.AddTransient<ILieuRepository, LieuService>();
 builder.Services.AddTransient<IUtilisateurServices, UtilisateursService>();

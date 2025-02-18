@@ -1,0 +1,147 @@
+@page "/Lieu"
+@rendermode RenderMode.InteractiveAuto
+@inject NavigationManager Nvm
+
+<h3>Lieu</h3>
+<div class="container-fluid d-flex flex-wrap">
+    @foreach (LieuModel lieu in _lieus)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">@lieu.Nom</h5>
+                <p class="card-text">@lieu.Description</p>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @onclick="()=>SetModalValues(lieu)">
+                    Modify
+                </button>
+            </div>
+        </div>
+    } 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@(_currentLieu?.Nom ?? "unknown")</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form inside the modal -->
+                <EditForm Model="_currentLieu" OnValidSubmit="OnValidSubmit" OnInvalidSubmit="OnInvalidSubmit">
+                    <DataAnnotationsValidator/>
+                    <label for="Name">Nom</label>
+                    <InputText class="form-control" id="Name" @bind-Value=@_currentLieu.Nom/>
+                    <label for="Email">Description</label>
+                    <InputText class="form-control" id="Email" @bind-Value=@_currentLieu.Description/>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="submit">Update</button>
+                    </div>
+                    <ValidationSummary/>
+                </EditForm>
+            </div>
+       
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-primary fixed-button" data-bs-toggle="modal" data-bs-target="#createModal">+</button>
+
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">@(_currentLieu?.Nom ?? "unknown")</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form inside the modal -->
+                <EditForm Model="_currentLieu" OnValidSubmit="OnCreateSubmit" OnInvalidSubmit="OnInvalidSubmit">
+                    <DataAnnotationsValidator/>
+                    <label for="createModalName">Nom</label>
+                    <InputText class="form-control" id="createModalName" @bind-Value=@_currentLieu.Nom/>
+                    <label for="createModalEmail">Description</label>
+                    <InputText class="form-control" id="createModalEmail" @bind-Value=@_currentLieu.Description/>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="submit">Create</button>
+                    </div>
+                    <ValidationSummary/>
+                </EditForm>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom CSS to make the button fixed at the lower right corner */
+    .fixed-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999; /* Ensure it's on top of other content */
+    }
+</style>
+
+
+@code
+{
+    [Inject]
+    public HttpClient HttpClient { get; set; } 
+    
+    List<LieuModel> _lieus = new();
+
+    LieuModel _currentLieu = new LieuModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _lieus = await HttpClient.GetFromJsonAsync<List<LieuModel>>("https://localhost:7171/api/Lieu");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+
+    private void SetModalValues(LieuModel lieu) => _currentLieu = lieu;
+
+   
+
+    private void OnInvalidSubmit()
+    {
+        Nvm.NavigateTo("lieu", forceLoad: true);
+    }
+
+    private async Task OnCreateSubmit()
+    {
+        try
+        {
+            var response = await HttpClient.PostAsJsonAsync<LieuModel>($"https://localhost:7171/api/Lieu/Post", _currentLieu);
+            response.EnsureSuccessStatusCode();
+            Nvm.NavigateTo("lieu", forceLoad: true);
+            StateHasChanged();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw e.InnerException;
+        }
+    }
+
+    private async Task OnValidSubmit()
+    {
+        try
+        {
+            var response = await HttpClient.PutAsJsonAsync<LieuModel>($"https://localhost:7171/api/Lieu/Put/{_currentLieu.Id}", _currentLieu);
+            response.EnsureSuccessStatusCode();
+            Nvm.NavigateTo("lieu", forceLoad: true);
+            StateHasChanged();
+        }
+        catch (Exception e)
+        {
+            throw e.InnerException;
+        }
+    }
+}
