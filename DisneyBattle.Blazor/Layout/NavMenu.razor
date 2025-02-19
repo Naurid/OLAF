@@ -1,7 +1,7 @@
 ﻿@namespace DisneyBattle.Blazor
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">DisneyBattle.Blazor</a>
+        <a class="navbar-brand" href="">DisneyBattle</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,17 +15,17 @@
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="personnage">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Personnage
+               Personnage
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                 Home
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="lieu" >
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Lieu
+                Lieu
             </NavLink>
         </div>
     </nav>
@@ -40,5 +40,4 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
-
 }

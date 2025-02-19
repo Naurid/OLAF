@@ -40,6 +40,7 @@ builder.Services.AddTransient<PersonnageService>();
 builder.Services.AddTransient<IEquipementServices, EquipementServices>();
 builder.Services.AddTransient<ILieuRepository, LieuService>();
 builder.Services.AddTransient<IUtilisateurServices, UtilisateursService>();
+builder.Services.AddTransient<IPointFaibleRepository, PointFaibleService>();
  
 var app = builder.Build();
 
