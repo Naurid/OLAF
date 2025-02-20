@@ -1,18 +1,12 @@
-﻿@inherits LayoutComponentBase
+﻿@namespace DisneyBattle.Blazor
+@inherits LayoutComponentBase
 <div class="page">
     <div class="sidebar">
         <NavMenu/>
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="personnage">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Personnage
-            </NavLink>
-        </div>
+        
 
         <article class="content px-4">
             @Body

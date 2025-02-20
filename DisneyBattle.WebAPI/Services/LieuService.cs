@@ -17,7 +17,7 @@ public class LieuService:ILieuRepository
     }
     public bool Insert(LieuModel entity)
     {
-        return 1 == _dbConnection.ExecuteNonQuery("INSERT INTO [dbo].[lieux] (nom, description) VALUES @nom, @description ", false, new{ nom = entity.Name, description = entity.Description });
+        return 1 == _dbConnection.ExecuteNonQuery("INSERT INTO [dbo].[lieux] (nom, description) VALUES (@nom, @description)", false, new{ nom = entity.Nom, description = entity.Description });
     }
 
     public bool Update(int id, LieuModel entity)

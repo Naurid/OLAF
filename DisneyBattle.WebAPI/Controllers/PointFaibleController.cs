@@ -2,32 +2,33 @@ using DisneyBattle.WebAPI.Models;
 using DisneyBattle.WebAPI.Repos;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace DisneyBattle.WebAPI.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class LieuController(ILieuRepository lr):ControllerBase
+public class PointFaibleController(IPointFaibleRepository pfr):ControllerBase
 {
     [HttpGet]
     public IActionResult GetAll()
     {
-        return Ok(lr.GetAll());
+        return Ok(pfr.GetAll());
     }
     
     [HttpGet("Get/{id}")]
     public IActionResult Get(int id)
     {
-        return Ok(lr.GetById(id));
+        return Ok(pfr.GetById(id));
     }
     
     [HttpPut("Put/{id}")]
-    public IActionResult Put(int id, [FromBody] LieuModel entity)
+    public IActionResult Put(int id, [FromBody] PointFaibleModel entity)
     {
-        return Ok(lr.Update(id, entity));
+        return Ok(pfr.Update(id, entity));
     }
     
     [HttpPost("Post")]
-    public IActionResult Post([FromBody] LieuModel entity)
+    public IActionResult Post([FromBody] PointFaibleModel entity)
     {
-        return Ok(lr.Insert(entity));
+        return Ok(pfr.Insert(entity));
     }
 }

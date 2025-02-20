@@ -1,5 +1,6 @@
-﻿namespace BlazorApp1.Models
-{
+﻿namespace DisneyBattle.Blazor.Models
+{ 
+
     public class PersonnageModel
     {
         public int Id { get; set; }

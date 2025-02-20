@@ -94,7 +94,7 @@ namespace DisneyBattle.WebAPI.Repositories
                             Lieu = new LieuModel
                             {
                                 Id = reader.GetInt32(9),
-                                Name = reader.GetString(10),
+                                Nom = reader.GetString(10),
                                 Description = reader.GetString(11)
                             }
                         };
@@ -135,7 +135,7 @@ namespace DisneyBattle.WebAPI.Repositories
                             Lieu = new LieuModel
                             {
                                 Id = reader.GetInt32(9),
-                                Name = reader.GetString(10),
+                                Nom = reader.GetString(10),
                                 Description = reader.GetString(11)
                             }
                         });
