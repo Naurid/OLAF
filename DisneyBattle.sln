@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.WebAPI", "DisneyBattle.WebAPI\DisneyBattle.WebAPI.csproj", "{CC168510-DF4C-465B-A358-B4EE7EF5E190}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisneyBattle.WebAPI", "DisneyBattle.WebAPI\DisneyBattle.WebAPI.csproj", "{CC168510-DF4C-465B-A358-B4EE7EF5E190}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.Interfaces", "DisneyBattle.Interfaces\DisneyBattle.Interfaces.csproj", "{703801A0-5301-4DD0-9DE0-48F35C30B007}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisneyBattle.Interfaces", "DisneyBattle.Interfaces\DisneyBattle.Interfaces.csproj", "{703801A0-5301-4DD0-9DE0-48F35C30B007}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyBattle.Blazor", "DisneyBattle.Blazor\DisneyBattle.Blazor.csproj", "{B1C3465E-3307-4AA0-AF3F-48B6CB51C670}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisneyBattle.Blazor", "DisneyBattle.Blazor\DisneyBattle.Blazor.csproj", "{B1C3465E-3307-4AA0-AF3F-48B6CB51C670}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,8 +9,10 @@
 
     <ItemGroup>
         <PackageReference Include="BStorm.Tools.Database" Version="1.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.13" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
         <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
+        <PackageReference Include="Microsoft.Identity.Web" Version="3.7.1" />
         <PackageReference Include="Microsoft.SqlServer.Server" Version="1.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     </ItemGroup>
@@ -18,6 +20,12 @@
     <ItemGroup>
       <ProjectReference Include="..\DisneyBattle.Interfaces\DisneyBattle.Interfaces.csproj" />
 		
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
