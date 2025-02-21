@@ -14,7 +14,7 @@ else if (listePersonnages.Count == 0)
 }
 else
 {
-    <table class="table table-striped table-bordered">
+    <table class="table table-dark table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
@@ -32,15 +32,30 @@ else
             @foreach (var personnage in listePersonnages)
             {
                 <tr>
-                    <td>@personnage.Id</td>
-                    <td>@personnage.Nom</td>
-                    <td>@personnage.AlignementId</td>
-                    <td>@personnage.Niveau</td>
-                    <td>@personnage.Experience</td>
-                    <td>@personnage.PointsVie</td>
-                    <td>@personnage.PointsAttaque</td>
-                    <td>@personnage.PointsDefense</td>
-                    <td>@personnage.LieuId</td>
+                    @if (personnage.AlignementId == 1)
+                    {
+                        <td class="bg-light text-black">@personnage.Id</td>
+                        <td class="bg-light text-black">@personnage.Nom</td>
+                        <td class="bg-light text-black">@personnage.AlignementId</td>
+                        <td class="bg-light text-black">@personnage.Niveau</td>
+                        <td class="bg-light text-black">@personnage.Experience</td>
+                        <td class="bg-light text-black">@personnage.PointsVie</td>
+                        <td class="bg-light text-black">@personnage.PointsAttaque</td>
+                        <td class="bg-light text-black">@personnage.PointsDefense</td>
+                        <td class="bg-light text-black">@personnage.LieuId</td>
+                    }
+                    else
+                    {
+                        <td>@personnage.Id</td>
+                        <td>@personnage.Nom</td>
+                        <td>@personnage.AlignementId</td>
+                        <td>@personnage.Niveau</td>
+                        <td>@personnage.Experience</td>
+                        <td>@personnage.PointsVie</td>
+                        <td>@personnage.PointsAttaque</td>
+                        <td>@personnage.PointsDefense</td>
+                        <td>@personnage.LieuId</td>
+                    }
                 </tr>
             }
         </tbody>

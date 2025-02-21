@@ -7,13 +7,17 @@
 <div class="container-fluid d-flex flex-wrap">
     @foreach (PointFaibleModel pointFaibleModel in _pointsFaibles)
     {
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">@pointFaibleModel.Nom</h5>
-                <p class="card-text">@pointFaibleModel.Description</p>
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @onclick="()=>SetModalValues(pointFaibleModel)">
-                    Modify
-                </button>
+        <div class="card bg-cheos text-white shadow-sm m-4" style="width: 18rem;">
+            <div class="card-body d-flex flex-column">
+                <div>
+                    <h5 class="card-title">@pointFaibleModel.Nom</h5>
+                    <p class="card-text">@pointFaibleModel.Description</p>
+                </div>
+                <div class="pt-4 mt-auto text-center">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @onclick="()=>SetModalValues(pointFaibleModel)">
+                        Modify
+                    </button>
+                </div>
             </div>
         </div>
     } 
@@ -35,7 +39,7 @@
                     <InputText class="form-control" id="Name" @bind-Value=@_currentPointFaible.Nom/>
                     <label for="Email">Description</label>
                     <InputText class="form-control" id="Email" @bind-Value=@_currentPointFaible.Description/>
-                    <div class="modal-footer">
+                    <div class="modal-footer justify-content-center">
                         <button class="btn btn-success" type="submit">Update</button>
                     </div>
                     <ValidationSummary/>

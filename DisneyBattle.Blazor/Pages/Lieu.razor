@@ -6,13 +6,17 @@
 <div class="container-fluid d-flex flex-wrap">
     @foreach (LieuModel lieu in _lieus)
     {
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">@lieu.Nom</h5>
-                <p class="card-text">@lieu.Description</p>
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @onclick="()=>SetModalValues(lieu)">
-                    Modify
-                </button>
+        <div class="card bg-cheos text-white shadow-sm m-4" style="width: 18rem;">
+            <div class="card-body d-flex flex-column">
+                <div>
+                    <h5 class="card-title">@lieu.Nom</h5>
+                    <p class="card-text">@lieu.Description</p>
+                </div>
+                <div class="pt-4 mt-auto text-center">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @onclick="()=>SetModalValues(lieu)">
+                        Modify
+                    </button>
+                </div>
             </div>
         </div>
     } 
@@ -34,7 +38,7 @@
                     <InputText class="form-control" id="Name" @bind-Value=@_currentLieu.Nom/>
                     <label for="Email">Description</label>
                     <InputText class="form-control" id="Email" @bind-Value=@_currentLieu.Description/>
-                    <div class="modal-footer">
+                    <div class="modal-footer justify-content-center">
                         <button class="btn btn-success" type="submit">Update</button>
                     </div>
                     <ValidationSummary/>
