@@ -32,7 +32,7 @@ builder.Services.AddScoped(sp =>
     {
         BaseAddress = new Uri("https://localhost:7171/api/")
     });
-// Injection des dépendances
+// Injection des dépendances :
 builder.Services.AddTransient<IPersonnageRepository, PersonnageRepository>(provider =>
     new PersonnageRepository(connectionString));
 
